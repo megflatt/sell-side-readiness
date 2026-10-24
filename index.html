@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sell-Side Readiness — Is Your Business Ready to Sell?</title>
+<meta name="description" content="An educational readiness assessment, valuation-range estimate, prep checklist, and exit-route finder for business owners considering selling.">
+<style>
+  :root{--ink:#1a2332;--muted:#5b6675;--line:#dde3ea;--accent:#0f766e;--accent2:#e6f4f1;--warn:#b45309;--warnbg:#fef3c7;--good:#15803d;--card:#ffffff;--bg:#f4f6f8}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+  header{background:#12202f;color:#fff;padding:2.2rem 1rem 1.6rem}
+  .wrap{max-width:860px;margin:0 auto;padding:0 1rem}
+  h1{margin:0 0 .4rem;font-size:1.9rem;line-height:1.2}
+  header p{margin:.2rem 0;color:#c7d2dc;max-width:640px}
+  main{padding:1.5rem 0 3rem}
+  section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin:0 0 1.2rem}
+  h2{margin:0 0 .3rem;font-size:1.25rem}
+  h3{margin:1.2rem 0 .3rem;font-size:1rem}
+  .sub{color:var(--muted);margin:0 0 1rem}
+  label{display:block;font-weight:600;margin:1rem 0 .3rem}
+  input[type=number],select{width:100%;padding:.6rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:1rem}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1.2rem}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}}
+  .range-row{display:flex;gap:.8rem;align-items:center}
+  .range-row input[type=range]{flex:1}
+  .range-row output{min-width:3.2rem;text-align:right;font-weight:700}
+  .small{color:var(--muted);font-size:.85rem}
+  .score-box{background:var(--accent2);border-radius:12px;padding:1.2rem;text-align:center}
+  .score-num{font-size:3rem;font-weight:800;line-height:1}
+  .pill{display:inline-block;background:#12202f;color:#fff;border-radius:999px;padding:.25rem .9rem;font-weight:700;margin:.4rem 0}
+  .flags{margin:1rem 0 0;padding-left:1.2rem}
+  .flags li{margin:.35rem 0}
+  .val{font-size:1.6rem;font-weight:800}
+  .bar{height:10px;background:#e5e9ee;border-radius:99px;overflow:hidden}
+  .bar>div{height:100%;background:var(--accent);width:0%;transition:width .3s}
+  .checklist label{font-weight:400;display:flex;gap:.6rem;align-items:flex-start;margin:.55rem 0}
+  .checklist input{margin-top:.25rem;accent-color:var(--accent)}
+  .route{background:var(--accent2);border-radius:12px;padding:1.2rem}
+  .route h3{margin-top:0}
+  .vault{columns:2;column-gap:2rem}
+  @media(max-width:640px){.vault{columns:1}}
+  .vault ul{margin:.2rem 0 1rem;padding-left:1.2rem;break-inside:avoid}
+  .disclaimer{border:1px solid #f5c97b;background:#fffbeb;border-radius:12px;padding:1rem}
+  footer{color:var(--muted);font-size:.85rem;text-align:center;padding:0 1rem 2rem}
+  button{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:.7rem 1.2rem;font-size:1rem;font-weight:700;cursor:pointer}
+  button:hover{filter:brightness(1.08)}
+  .q{margin:1rem 0}
+  .q p{font-weight:600;margin:0 0 .3rem}
+  .q label{font-weight:400;display:block;margin:.25rem 0}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Your business — are you actually ready to sell?</h1>
+  <p>A readiness assessment, valuation-range estimate, prep checklist, and exit-route finder for owners thinking about selling. Built for owners, not bankers: plain language, no jargon wall.</p>
+  <p class="small" style="color:#9fb0bf">Everything runs in your browser. Nothing you enter is saved or sent anywhere.</p>
+</div></header>
+
+<main><div class="wrap">
+
+<section id="snapshot">
+  <h2>1 — Your business snapshot</h2>
+  <p class="sub">Start with the numbers buyers will ask for first. Use seller's discretionary earnings (SDE) for owner-operated businesses, or adjusted EBITDA for larger ones — whichever you actually track.</p>
+  <div class="grid">
+    <div><label for="revenue">Annual revenue ($)</label><input id="revenue" type="number" min="0" step="10000" value="2500000"></div>
+    <div><label for="earnings">Annual SDE / adjusted EBITDA ($)</label><input id="earnings" type="number" min="0" step="10000" value="500000"></div>
+    <div><label for="industry">Industry</label>
+      <select id="industry">
+        <option value="services">Professional / business services</option>
+        <option value="trades">Home services / trades (HVAC, plumbing, electrical)</option>
+        <option value="manufacturing">Manufacturing / distribution</option>
+        <option value="ecommerce">E-commerce / consumer products</option>
+        <option value="saas">Software / SaaS</option>
+        <option value="health">Healthcare services</option>
+        <option value="other">Other</option>
+      </select></div>
+    <div><label for="years">Years in business</label><input id="years" type="number" min="0" max="100" value="12"></div>
+    <div><label for="growth">Revenue trend, last 3 years</label>
+      <select id="growth"><option value="up">Growing</option><option value="flat" selected>Flat</option><option value="down">Declining</option></select></div>
+    <div><label for="employees">Employees (excluding owner)</label><input id="employees" type="number" min="0" value="14"></div>
+  </div>
+  <p><button id="calcBtn" type="button">Score my business</button></p>
+</section>
+
+<section id="scoring">
+  <h2>2 — How buyers will score you</h2>
+  <p class="sub">Buyers discount what they can't verify and what depends on you personally. Move each slider honestly — this is where most of the score lives.</p>
+  <div id="sliders"></div>
+  <div class="score-box">
+    <div class="small">YOUR READINESS SCORE</div>
+    <div class="score-num" id="scoreNum">—</div>
+    <div><span class="pill" id="grade">Fill in the snapshot, then score</span></div>
+    <ul class="flags" id="flags" style="text-align:left"></ul>
+  </div>
+</section>
+
+<section id="valuation">
+  <h2>3 — What your business could sell for — and why it's a range</h2>
+  <p class="sub">Small private businesses are usually priced as a multiple of SDE or EBITDA. The multiple moves with size, industry, growth, and how transferable the business is — that's your readiness score doing real work. This is a rule-of-thumb range for planning, not a valuation opinion.</p>
+  <p>Estimated multiple: <strong id="multRange">—</strong> of earnings</p>
+  <p class="val" id="valRange">—</p>
+  <p class="small" id="valNote"></p>
+  <h3>Size bands buyers talk in (rule of thumb)</h3>
+  <ul>
+    <li><strong>Under ~$500K earnings:</strong> mainly individual buyers; multiples are lowest and deals often include seller financing.</li>
+    <li><strong>~$500K–$2M earnings:</strong> the search-fund and small-PE zone; cleaner books and a real management layer raise the multiple fast.</li>
+    <li><strong>Over ~$2M earnings:</strong> institutional buyers enter; audited-quality financials and a team that stays matter most.</li>
+  </ul>
+</section>
+
+<section id="checklistSec">
+  <h2>4 — Prep checklist — work this before you talk price</h2>
+  <p class="sub">Every item you check raises the price a buyer can defend — or removes a reason to discount it. Tick what you already have.</p>
+  <div class="bar"><div id="checkBar"></div></div>
+  <p class="small" id="checkPct">0% complete</p>
+  <div class="checklist" id="checklist"></div>
+</section>
+
+<section id="routeSec">
+  <h2>5 — Route finder — answer 6 questions</h2>
+  <p class="sub">There is no single "best" exit. The right route depends on what you actually want out of the sale.</p>
+  <div id="routes"></div>
+  <p><button id="routeBtn" type="button">Find my route</button></p>
+  <div class="route" id="routeOut" style="display:none"></div>
+</section>
+
+<section id="vaultSec">
+  <h2>6 — Diligence vault — gather it before they ask</h2>
+  <p class="sub">Buyers move fastest — and pay most — when diligence answers arrive in days, not weeks. Start collecting now, while nothing is urgent.</p>
+  <div class="vault" id="vault"></div>
+</section>
+
+<section class="disclaimer">
+  <h2 style="margin-top:0">A note before you act on any of this</h2>
+  <p>This tool is educational. It is not legal, tax, accounting, or financial advice, and it is not a valuation opinion or a broker's price opinion. Multiples and scores here are planning rules of thumb drawn from how small-business transactions are commonly discussed — your actual price will depend on your market, your books, and a buyer's diligence. Talk to your CPA, attorney, and (when the time comes) a qualified M&amp;A advisor before making decisions about selling.</p>
+</section>
+
+</div></main>
+<footer>Built as a public educational tool. Nothing entered here is saved or sent anywhere.</footer>
+<script>
+const DIMS=[
+ {id:'financials',label:'Clean, verifiable financials',hint:'Accrual books, 3 years of tax returns that match the P&L, no unexplained add-backs.',w:0.22},
+ {id:'ownerdep',label:'Business runs without you',hint:'A buyer should be able to picture the business with you gone in 6–12 months.',w:0.20},
+ {id:'customers',label:'Diversified, contracted customers',hint:'No single customer over ~20% of revenue; recurring or contracted revenue helps most.',w:0.16},
+ {id:'team',label:'Team that stays',hint:'A second layer of management and key staff with reasons to stay after a sale.',w:0.16},
+ {id:'systems',label:'Documented systems & processes',hint:'Written SOPs, a real CRM, pricing and quoting that don\'t live in your head.',w:0.13},
+ {id:'growth',label:'Growth story a buyer can believe',hint:'A market that is growing, or a credible plan to grow — not just a good past year.',w:0.13}
+];
+const CHECKS=[
+ ['Financials',['3 years of tax returns reconciled to financials','Monthly P&Ls and balance sheets, accrual basis','Add-backs documented with support (owner comp, one-offs)','Quality-of-earnings review considered (for $1M+ earnings)','Debt, leases, and working-capital picture mapped out']],
+ ['Operations',['Key processes written down (SOPs)','Customer concentration analyzed; top-10 list ready','Supplier and vendor contracts reviewed for change-of-control clauses','Licenses, permits, and certifications current and transferable']],
+ ['Legal & contracts',['Entity docs, cap table / ownership records clean','Customer and employee agreements assignable (or consents mapped)','Real estate: lease assignable or purchase terms understood','Open litigation, claims, or tax issues disclosed and scoped']],
+ ['People',['Org chart with a real #2 (or a plan to hire one)','Key-employee retention plan sketched (stay bonuses, rollover)','Owner transition plan: how long you will stay, and in what role']],
+ ['Sale process',['Confidential information memorandum (CIM) drafted','Target buyer list built (strategic, PE, individual)','NDA and process letter templates ready','Advisor team picked: CPA, attorney, M&A advisor']]
+];
+const VAULT=[
+ ['Financial',['3 years tax returns + financials','Monthly P&Ls, balance sheets, cash-flow statements','AR/AP aging, inventory reports','Debt schedules, leases, equipment lists']],
+ ['Commercial',['Customer list with revenue by customer','Top contracts and MSAs','Pipeline and backlog reports','Marketing spend and channel performance']],
+ ['People & ops',['Org chart, comp bands, employment agreements','SOPs and process docs','Safety / compliance records','Key vendor and subcontractor agreements']],
+ ['Legal',['Formation docs and amendments','Real estate leases / deeds','IP assignments, trademarks, licenses','Litigation, insurance, and tax correspondence']]
+];
+const ROUTE_QS=[
+ {q:'What matters most in the sale?',opts:[['price','Highest price, even if it takes longer'],['speed','Speed and certainty of closing'],['legacy','The business and team are looked after'],['cash','Mostly cash at closing, minimal earn-out']]},
+ {q:'When do you want to be out?',opts:[['soon','Within 12 months'],['mid','1–3 years'],['later','3+ years — I want to grow first']]},
+ {q:'Would you stay on after the sale?',opts:[['no','No — clean break'],['short','A short transition (3–6 months)'],['years','Yes, 1–3 years in a real role']]},
+ {q:'Is there a management team that could run it without you?',opts:[['yes','Yes, largely'],['partly','Partly — with support'],['no','No, it runs on me']]},
+ {q:'How important is confidentiality?',opts:[['high','Critical — staff and customers must not hear early'],['med','Important, but manageable'],['low','Not a big concern']]},
+ {q:'Roughly how big is the business (earnings)?',opts:[['small','Under $500K'],['mid','$500K–$2M'],['large','Over $2M']]}
+];
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+function buildSliders(){
+  $('sliders').innerHTML=DIMS.map(d=>`<div><label>${d.label} <span class="small">— ${d.hint}</span></label>
+  <div class="range-row"><input type="range" min="0" max="100" value="50" id="s_${d.id}"><output id="o_${d.id}">50</output></div></div>`).join('');
+  DIMS.forEach(d=>{const el=$('s_'+d.id);el.addEventListener('input',()=>{$('o_'+d.id).textContent=el.value;score();});});
+}
+function buildChecks(){
+  $('checklist').innerHTML=CHECKS.map(([g,items])=>`<h3>${g}</h3>`+items.map(it=>`<label><input type="checkbox" class="ck">${it}</label>`).join('')).join('');
+  document.querySelectorAll('.ck').forEach(c=>c.addEventListener('change',updateChecks));
+}
+function updateChecks(){
+  const all=document.querySelectorAll('.ck'),done=document.querySelectorAll('.ck:checked');
+  const pct=all.length?Math.round(done.length/all.length*100):0;
+  $('checkBar').style.width=pct+'%';$('checkPct').textContent=pct+'% complete ('+done.length+' of '+all.length+')';
+}
+function buildRoutes(){
+  $('routes').innerHTML=ROUTE_QS.map((rq,i)=>`<div class="q"><p>${i+1}. ${rq.q}</p>`+rq.opts.map(([v,t])=>`<label><input type="radio" name="rq${i}" value="${v}"> ${t}</label>`).join('')+'</div>').join('');
+}
+function buildVault(){
+  $('vault').innerHTML=VAULT.map(([g,items])=>`<h3>${g}</h3><ul>`+items.map(it=>`<li>${it}</li>`).join('')+'</ul>').join('');
+}
+function baseMultiple(ind,earn){
+  let lo,hi;
+  if(earn<500000){lo=2.0;hi=3.5}else if(earn<2000000){lo=3.0;hi=5.0}else{lo=4.5;hi=7.0}
+  if(ind==='saas'){lo+=1.5;hi+=2.5}
+  if(ind==='trades'){lo-=0.25;hi-=0.25}
+  if(ind==='ecommerce'){lo-=0.5;hi-=0.5}
+  if(ind==='health'){lo+=0.25;hi+=0.25}
+  return [Math.max(1.0,lo),Math.max(1.5,hi)];
+}
+function score(){
+  let total=0,weak=[];
+  DIMS.forEach(d=>{const v=+ $('s_'+d.id).value;total+=v*d.w;if(v<40)weak.push(d.label);});
+  const s=Math.round(total);
+  $('scoreNum').textContent=s;
+  $('grade').textContent=s>=80?'Strong — buyers will compete':s>=60?'Solid — fix the flags before going to market':s>=40?'Work to do — price will reflect it':'Not ready yet — build first, sell later';
+  $('flags').innerHTML=weak.length?('<li><strong>Buyers will press on:</strong></li>'+weak.map(w=>`<li>${w}</li>`).join('')):'<li>No glaring weak spots in your self-scores — keep evidence ready for each one.</li>';
+  valuation(s);
+}
+function valuation(s){
+  const earn=+ $('earnings').value||0, ind=$('industry').value, g=$('growth').value;
+  if(!earn){$('multRange').textContent='—';$('valRange').textContent='Enter earnings above.';$('valNote').textContent='';return;}
+  let [lo,hi]=baseMultiple(ind,earn);
+  const adj=(s-50)/50*0.75; lo+=adj; hi+=adj;
+  if(g==='up'){lo+=0.25;hi+=0.25} if(g==='down'){lo-=0.5;hi-=0.5}
+  lo=Math.max(1.0,lo);hi=Math.max(lo+0.5,hi);
+  $('multRange').textContent=lo.toFixed(1)+'× – '+hi.toFixed(1)+'×';
+  $('valRange').textContent=fmt(earn*lo)+' – '+fmt(earn*hi);
+  $('valNote').textContent='At a readiness score of '+s+', the multiple sits '+(s>=60?'toward the top of what this size band usually sees.':s>=40?'mid-band — each readiness item you fix can move it.':'toward the bottom — buyers price in the risk they see.')+' Deals also turn on structure: cash at close vs. earn-outs and seller notes can move the realized price a lot.';
+}
+function route(){
+  const ans=ROUTE_QS.map((_,i)=>{const r=document.querySelector(`input[name=rq${i}]:checked`);return r?r.value:null});
+  if(ans.some(a=>!a)){alert('Answer all 6 questions first.');return;}
+  const [goal,when,stay,team,conf,size]=ans;
+  let title,body;
+  if(goal==='legacy'||(team==='no'&&stay==='years')){title='Family / management transfer or ESOP';body='Your priorities point toward a buyer who keeps the business intact: a management buyout, a family transfer, or an ESOP. These usually price below a competitive auction, but they protect staff, customers, and your name — and they can work where outside buyers would discount owner dependence.';}
+  else if(size==='small'||goal==='speed'){title='Individual buyer / search fund';body='For this size and timeline, the likeliest buyer is an individual operator or a search fund — often with seller financing as part of the deal. Price depends heavily on clean books and a transition plan, because the buyer is buying a job as much as a business.';}
+  else if(when==='later'){title='Hold, fix, then sell';body='Your answers say the highest-value move is not selling yet: use the next 1–3 years to lift the readiness score (clean financials, a real #2, documented systems), then run a competitive process. That preparation is usually worth more than any negotiating tactic at the table.';}
+  else if(goal==='cash'||size==='large'){title='Strategic buyer or private equity';body='A strategic buyer (a competitor or adjacent company) or a private-equity platform/add-on is the natural fit: they pay for synergies and scale, and they can usually fund mostly cash at close. Expect the deepest diligence — this is where the vault and the prep checklist pay off.';}
+  else{title='Competitive process — strategic + PE';body='Run a structured, confidential process with both strategic buyers and private equity at the table. Competition is what moves price; a single-buyer negotiation rarely does.';}
+  if(conf==='high')body+=' Confidentiality is critical for you: use NDAs before sharing anything identifying, and stage diligence so staff and customers learn late.';
+  if(stay==='no')body+=' Since you want a clean break, expect buyers to discount for transition risk unless the team can genuinely run it — that is the single biggest lever on your price.';
+  $('routeOut').style.display='block';
+  $('routeOut').innerHTML='<h3>Your likely route: '+title+'</h3><p>'+body+'</p>';
+}
+buildSliders();buildChecks();buildRoutes();buildVault();updateChecks();score();
+$('calcBtn').addEventListener('click',score);
+$('routeBtn').addEventListener('click',route);
+['revenue','earnings','industry','years','growth','employees'].forEach(id=>$(id).addEventListener('change',score));
+</script>
+</body>
+</html>
